@@ -1,0 +1,21 @@
+5/9/2009 - jbilling-php-api-v1.2
+---------------------------------
+* Created JavaDouble class to solve issue with
+  PHP treating doubles and floats as the same data type
+* Refactored WSDLAPI::____toComplexDataType() to support
+  new JavaDouble data type
+* Created new OrderLineWS object which reflects
+  jbilling 1_1_2 OrderLineWS object
+* Added new jbilling 1_1_2 properties to OrderWS
+
+
+5/5/2009 - jbilling-php-api-v1.1
+--------------------------------
+* Added support for jbilling 1_1_2 api
+* ContactDTO updated to ContactWS
+* Added type casting to OrderLineWS properties
+* Refactored WSDLAPI::____toComplexDataType() and
+  added data type support for boolean, float, and
+  double.
+* Renamed iJbillingAPI interface to JbillingAPI
+* Updated INSTALL example usage
