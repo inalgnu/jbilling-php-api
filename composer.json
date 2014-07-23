@@ -1,0 +1,11 @@
+{
+    "name": "inalgnu/jbilling-php-api",
+    "license": "GPLv3",
+    "authors": [
+        {
+            "name": "Inal DJAFAR",
+            "email": "inal.djafar@ulipse.com"
+        }
+    ],
+    "require": {}
+}
