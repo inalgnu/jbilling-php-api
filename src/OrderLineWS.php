@@ -190,7 +190,7 @@ class OrderLineWS
     public function setItemDto($dto)
     {
         if (! $dto instanceof ItemDTOEx) {
-         throw new JbillingAPIException( "parameter passed to setItemDTO is not ItemDTOEx type" );
+            throw new JbillingAPIException( "parameter passed to setItemDTO is not ItemDTOEx type" );
         }
 
         $this->itemDto = $dto;

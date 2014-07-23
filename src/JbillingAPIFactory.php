@@ -26,32 +26,6 @@ namespace JBilling;
   * @copyright Make A Byte, inc
   * @package com.makeabyte.contrib.jbilling.php
   */
-
-// Required SOAP libraries
-require_once 'SOAP/Client.php';
-require_once 'SOAP/Value.php';
-
-// Required JbillingAPIFactory classes
-require_once 'JbillingAPI.php';
-require_once 'JbillingAPIException.php';
-require_once 'AchDTO.php';
-require_once 'ContactWS.php';
-require_once 'CreateResponseWS.php';
-require_once 'CreditCardDTO.php';
-require_once 'InvoiceLineDTO.php';
-require_once 'InvoiceWS.php';
-require_once 'ItemDTOEx.php';
-require_once 'OrderLineWS.php';
-require_once 'OrderWS.php';
-require_once 'PaymentAuthorizationDTO.php';
-require_once 'PaymentAuthorizationDTOEx.php';
-require_once 'PaymentInfoChequeDTO.php';
-require_once 'PaymentWS.php';
-require_once 'UserTransitionResponseWS.php';
-require_once 'UserWS.php';
-require_once 'WSDLAPI.php';
-require_once 'JavaDouble.php';
-
 class JbillingAPIFactory
 {
     private static $api = null;
