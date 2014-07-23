@@ -7,5 +7,8 @@
             "email": "inal.djafar@ulipse.com"
         }
     ],
-    "require": {}
+    "require": {
+        "php": ">=5.3.0",
+        "ext-soap": "*"
+    }
 }
