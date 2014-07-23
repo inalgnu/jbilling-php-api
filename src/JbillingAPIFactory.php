@@ -36,8 +36,8 @@ class JbillingAPIFactory
         $this->api = new WSDLAPI($url, $username, $password);
 
         // Catch SOAP_Faults / JbillingAPIExceptions throws by the WSDL provider
-        if ($this->api instanceof SOAP_Fault) {
-            throw new JbillingAPIException( $this->api->message );
+        if ($this->api instanceof \SOAPFault) {
+            throw new JbillingAPIException( $this->api );
         }
     }
 

@@ -19,6 +19,7 @@ namespace JBilling;
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+
 /**
   * WSDLAPI
   * @author Jeremy Hahn
@@ -35,7 +36,7 @@ class WSDLAPI implements JbillingAPI
     public $wsdl;
     public $soapClient;
 
-    public function WSDLAPI($url, $username, $password)
+    public function __construct($url, $username, $password)
     {
         $this->url      = $url;
         $this->username = $username;
@@ -43,16 +44,11 @@ class WSDLAPI implements JbillingAPI
 
         try {
             // Establish a connection to the jbilling WSDL provider.
-            $authParams        = array( 'user' =>  $username, 'pass' => $password );
-            $this->wsdl        = new SOAP_WSDL( $url, $authParams );
-            $this->soapClient  = $this->wsdl->getProxy();
+            $authParams        = array( 'login' =>  $username, 'password' => $password );
+            $this->soapClient  = new \SoapClient($url, $authParams);
 
             if (!$this->soapClient) {
                 throw new JbillingAPIException( "An error occurred attempting to retrieve WSDL from JBilling API server." );
-            }
-
-            if ($this->soapClient instanceof SOAP_Fault) {
-                throw new JbillingAPIException( $this->soapClient->message );
             }
 
         } catch ( \Exception $e ) {
