@@ -28,35 +28,24 @@ namespace JBilling;
   */
 class JbillingAPIFactory
 {
-    private static $api = null;
+    private $api;
 
-    private function __construct() { }
-
-    /**
-    * Create the getAPI method which returns a singleton object of the WSDLAPI
-    * NOTE: You can modify this routine to automatically retrieve your Jbilling API connection parameters or add another
-    *       API type, such as creating another API provider which uses PHP/Java integration performing native calls to EJBAPI
-    *       rather than using AXIS WSDL.
-    *
-    * @access public
-    * @param Integer $url The uniform resource locator of the jbilling WSDL provider
-    * @param String $username The username of the jbilling API account to use for WSDL connection
-    * @param String $password The password used to authenticate the jbilling WSDL API account
-    * @return JbillingAPIFactory A singleton instance of JbillingAPIFactory which should be a handle to one of the supported jbilling PHP wrapper API providers
-    */
-    public static function getAPI($url, $username, $password)
+    public function __construct($url, $username, $password)
     {
         // Create a new instance of the WSDLAPI provider
-        if (self::$api == null) {
-            self::$api = new WSDLAPI( $url, $username, $password );
-        }
+        $this->api = new WSDLAPI($url, $username, $password);
 
         // Catch SOAP_Faults / JbillingAPIExceptions throws by the WSDL provider
-        if (self::$api instanceof SOAP_Fault) {
-            throw new JbillingAPIException( self::$api->message );
+        if ($this->api instanceof SOAP_Fault) {
+            throw new JbillingAPIException( $this->api->message );
         }
+    }
 
-        // Return an instance of the WSDLAPI provider object
-        return self::$api;
+    /**
+     * @return WSDLAPI instance of the WSDLAPI provider object
+     */
+    public function getApi()
+    {
+        return $this->api;
     }
 }
