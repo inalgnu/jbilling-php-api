@@ -33,10 +33,10 @@ class JbillingAPIFactory
     public function __construct($url, $username, $password)
     {
         // Create a new instance of the WSDLAPI provider
-        $this->api = new WSDLAPI($url, $username, $password);
+        $this->api = new WSDLAPI($url, array( 'trace' => 1, 'login' => $username, 'password' => $password ));
 
         // Catch SOAP_Faults / JbillingAPIExceptions throws by the WSDL provider
-        if ($this->api instanceof \SOAPFault) {
+        if ($this->api instanceof \SoapFault) {
             throw new JbillingAPIException( $this->api );
         }
     }
